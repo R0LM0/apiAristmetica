@@ -9,7 +9,7 @@ const setupApiRoutes = (app, routes) => {
 
     const protectedRouter = express.Router();
     protectedRouter.use(authMiddleware); // funciona porque es default
-    // protectedRouter.use('/secure-data', secureRoutes);
+    protectedRouter.use('/', routes.userRoutes);
     app.use('/api', protectedRouter);
 
     app.use('*', (req, res) => {

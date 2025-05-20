@@ -1,6 +1,6 @@
 import getAllOperationLevelsUseCase from '../../use_case/getAllOperationLevelsUseCase.js';
 
-class OperationLevelController {
+class operationLevelController {
     async list(req, res) {
         try {
             const levels = await getAllOperationLevelsUseCase.execute();
@@ -12,4 +12,4 @@ class OperationLevelController {
     }
 }
 
-export default new OperationLevelController();
+export default new operationLevelController();

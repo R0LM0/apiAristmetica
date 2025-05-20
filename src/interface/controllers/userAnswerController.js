@@ -1,6 +1,6 @@
 import createUserAnswerUseCase from '../../use_case/createUserAnswerUseCase.js';
 
-class UserAnswerController {
+class userAnswerController {
     async save(req, res) {
         try {
             const { user_id, operation_level_id, question, given_answer, is_correct } = req.body;
@@ -21,4 +21,4 @@ class UserAnswerController {
     }
 }
 
-export default new UserAnswerController();
+export default new userAnswerController();
