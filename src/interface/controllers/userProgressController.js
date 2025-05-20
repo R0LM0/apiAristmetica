@@ -6,7 +6,8 @@ import getUserProgressUseCase from '../../use_case/getUserProgressUseCase.js';
 class userProgressController {
     async update(req, res) {
         try {
-            const { user_id, operation_level_id, current_level, score } = req.body;
+            const user_id = req.user.id; // 🔥 obtenido del JWT
+            const { operation_level_id, current_level, score } = req.body;
 
             await updateUserProgressUseCase.execute({
                 user_id,
@@ -21,6 +22,7 @@ class userProgressController {
             res.status(500).json({ message: "Error al actualizar progreso" });
         }
     }
+
     async getByUser(req, res) {
         try {
             const { user_id } = req.params;
