@@ -4,7 +4,7 @@ class AuthController {
     async loginWithGoogle(req, res) {
         try {
             const googleUserData = req.body;
-            // console.log("Google user data:", googleUserData);
+            console.log("Google user data:", googleUserData);
             const result = await loginWithGoogleUseCase.execute(googleUserData);
 
             res.status(200).json(result);
