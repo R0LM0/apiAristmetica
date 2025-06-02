@@ -10,8 +10,13 @@ class LoginWithGoogleUseCase {
         // 1. Verificar token con Google
         const ticket = await client.verifyIdToken({
             idToken,
-            audience: process.env.GOOGLE_CLIENT_ID,
+            audience: [
+                process.env.GOOGLE_CLIENT_ID, // Web (tipo 3)
+                '23226684733-3d2rqeuiq4peputbc0gsnrcf6csns79p.apps.googleusercontent.com', // Android debug
+                '23226684733-duamcvskgc4veeu79s54378ptd59v5f8.apps.googleusercontent.com', // Android release
+            ],
         });
+
 
         const payload = ticket.getPayload();
         const { sub, name, email, picture } = payload;
