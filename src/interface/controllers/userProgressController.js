@@ -10,7 +10,7 @@ class userProgressController {
             const user_id = req.user.id;
             const { operation_level_id } = req.body;
 
-            console.log(`🔄 Creando progreso para usuario ${user_id}, operación ${operation_level_id}`);
+            //  console.log(`🔄 Creando progreso para usuario ${user_id}, operación ${operation_level_id}`);
 
             const progress = await createUserProgressUseCase.execute({
                 user_id,
@@ -19,7 +19,7 @@ class userProgressController {
                 score: 0
             });
 
-            console.log(`✅ Progreso creado exitosamente:`, progress.toJSON());
+            //  console.log(`✅ Progreso creado exitosamente:`, progress.toJSON());
 
             res.status(201).json({
                 message: "Progreso inicial creado correctamente",
