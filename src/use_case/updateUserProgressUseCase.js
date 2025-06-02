@@ -11,7 +11,7 @@ class UpdateUserProgressUseCase {
                 updated_at: new Date()
             });
         } else {
-            await userProgressRepository.createProgress({
+            await userProgressRepository.create({
                 user_id,
                 operation_level_id,
                 current_level,
