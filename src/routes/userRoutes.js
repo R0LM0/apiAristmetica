@@ -7,6 +7,7 @@ import statsController from '../interface/controllers/statsController.js';
 
 const router = express.Router();
 
+router.post('/user-progress/create', userProgressController.create);
 router.post('/user-progress', userProgressController.update);
 router.post('/user-answers', userAnswerController.save);
 router.get('/operation-levels', operationLevelController.list);

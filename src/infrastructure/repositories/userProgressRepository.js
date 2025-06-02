@@ -1,7 +1,10 @@
+// src/infrastructure/repositories/userProgressRepository.js
+
 import UserProgress from "../database/models/userProgressModel.js";
 
 class UserProgressRepository {
-    async createProgress(data) {
+    // ✅ Cambiar createProgress por create
+    async create(data) {
         return await UserProgress.create(data);
     }
 
