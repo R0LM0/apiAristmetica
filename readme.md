@@ -1,50 +1,59 @@
-# npm init -y
-# npm install express pg pg-hstore sequelize jsonwebtoken dotenv
-<!-- Explicación de las dependencias:
+# 🧮 API Aristmética - Backend para Math Fun for Kids
 
-express: Framework para construir el servidor API.
-pg y pg-hstore: Driver de PostgreSQL para Node.js y Sequelize.
-sequelize: ORM que facilita el manejo de la base de datos.
-jsonwebtoken: Para manejar la autenticación basada en JWT.
-dotenv: Para cargar variables de entorno desde un archivo .env. -->
-# npm install --save-dev nodemon sequelize-cli
-<!-- Explicación de las devDependencies:
+Este repositorio contiene el backend de la aplicación educativa **Math Fun for Kids**, desarrollado con **Node.js**, **Express** y **PostgreSQL**, utilizando **Sequelize** como ORM. El objetivo principal es gestionar usuarios, progreso, niveles, autenticación y respuestas matemáticas.
 
-nodemon: Observa los archivos y reinicia automáticamente el servidor al hacer cambios.
-sequelize-cli: Herramienta para manejar migraciones, seeders y otras utilidades relacionadas con Sequelize. -->
-# npm install morgan cors
-<!-- Resumen:
-Morgan: Middleware de registro de solicitudes HTTP para depuración y monitoreo de tráfico.
-CORS: Middleware para habilitar o restringir solicitudes HTTP de diferentes orígenes (dominios) según las reglas de CORS.
-Ambos son herramientas esenciales para el desarrollo de APIs seguras y monitoreadas -->
-# npm install ws
-# Clean Architecture
+---
+
+## 🚀 Tecnologías utilizadas
+
+- **Node.js**: Entorno de ejecución para JavaScript.
+- **Express**: Framework para construir APIs REST.
+- **PostgreSQL**: Base de datos relacional.
+- **Sequelize**: ORM para facilitar consultas SQL.
+- **jsonwebtoken**: Para autenticación basada en JWT.
+- **dotenv**: Gestión de variables de entorno.
+- **cors** y **morgan**: Seguridad y logging.
+- **ws**: WebSocket para comunicación en tiempo real (opcional).
+
+---
+
+## ⚙️ Instalación
+
+```bash
+git clone https://github.com/R0LM0/apiAristmetica.git
+cd apiAristmetica
+📦 Dependencias
+npm install
+npm install express pg pg-hstore sequelize jsonwebtoken dotenv
+npm install --save-dev nodemon sequelize-cli
+npm install morgan cors
+npm install ws
+📁 Estructura del Proyecto (Clean Architecture)
+
 src/
-│
-├── entities/            # Modelos del dominio (usuarios, sesiones, ubicaciones, etc.)
-│   └── User.js
+├── entities/              # Modelos del dominio (usuarios, sesiones, etc.)
+│   ├── User.js
 │   └── Location.js
-│
-├── use-cases/           # Casos de uso (autenticación, registro, manejo de ubicaciones, etc.)
+├── use-cases/             # Casos de uso (login, registro, lógica de progreso)
+│   ├── CreateUser.js
 │   └── UserAuthentication.js
-│   └── CreateUser.js
-│
-├── interface-adapters/  # Controladores y validaciones
-│   └── controllers/
-│       └── UserController.js
-│   └── dtos/
-│       └── UserDTO.js
-│
-├── infrastructure/      # Interacción con bases de datos y otras tecnologías
+├── infrastructure/
+│   ├── repositories/
 │   └── database/
-│       └── models/      # Modelos de Sequelize
-│           └── UserModel.js
-│   └── services/
-│       └── UserService.js
-│   └── repositories/
-│       └── UserRepository.js
-│
-├── config/              # Configuración del proyecto (Sequelize, variables de entorno, etc.)
-│   └── database.js
-│
-├── index.js             # Archivo principal de inicio del servidor
+├── interface/
+│   ├── controllers/
+│   └── routes/
+└── index.js               # Punto de entrada principal
+
+
+📦 Despliegue
+Este backend se encuentra desplegado en Render.com y expone su API mediante HTTPS. Puede conectarse directamente desde apps Flutter u otros clientes.
+
+🔗 Repositorio del Frontend
+📱 math_learning_app (Flutter)
+
+🧠 Créditos
+Este proyecto fue desarrollado como parte del curso de Diseño de Base de Datos y Servidores de la Universidad Nacional Casimiro Sotelo Montenegro. Se utilizaron herramientas modernas y apoyo con inteligencia artificial (ChatGPT) para mejorar código, resolver errores y generar propuestas de estructura.
+
+📝 Licencia
+MIT © 2025 - Equipo Numoki
