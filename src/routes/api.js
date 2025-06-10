@@ -1,14 +1,23 @@
-// ✅ Limpio y correcto
 import express from "express";
-import authMiddleware from "../middlewares/authMiddleware.js"; // sin espacios y sin destructuring
+import rateLimit from 'express-rate-limit';
+import authMiddleware from "../middlewares/authMiddleware.js";
 
 const setupApiRoutes = (app, routes) => {
+    const limiter = rateLimit({
+        windowMs: 15 * 60 * 1000,
+        max: 100,
+        standardHeaders: true,
+        legacyHeaders: false,
+    });
+
+    app.use(limiter); // ⛔️ esto previene ataques DoS
+
     const publicRouter = express.Router();
     publicRouter.use('/google-login', routes.authRoutes);
     app.use('/api', publicRouter);
 
     const protectedRouter = express.Router();
-    protectedRouter.use(authMiddleware); // funciona porque es default
+    protectedRouter.use(authMiddleware);
     protectedRouter.use('/', routes.userRoutes);
     app.use('/api', protectedRouter);
 
