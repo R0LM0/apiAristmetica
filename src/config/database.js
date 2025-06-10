@@ -18,6 +18,22 @@ const sequelize = new Sequelize(
             },
         },
         logging: false,
+        // Configuración de pool para optimizar conexiones
+        pool: {
+            max: 20, // máximo de conexiones en el pool
+            min: 5,  // mínimo de conexiones en el pool
+            acquire: 30000, // tiempo máximo para adquirir conexión (30s)
+            idle: 10000, // tiempo máximo que una conexión puede estar inactiva (10s)
+        },
+        // Configuración de timeouts
+        retry: {
+            max: 3, // máximo de reintentos
+            timeout: 5000, // timeout por intento (5s)
+        },
+        // Configuración de consultas
+        query: {
+            raw: false, // mantener objetos Sequelize
+        },
     }
 );
 
